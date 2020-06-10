@@ -2,8 +2,9 @@ import requests
 from bs4 import BeautifulSoup as bs
 from urllib.request import urlopen as uReq
 from selenium import webdriver
-firefox_options = webdriver.FirefoxOptions()
-driver = webdriver.Firefox(firefox_options=firefox_options)
+# firefox_options = webdriver.FirefoxOptions()
+# driver = webdriver.Firefox(firefox_options=firefox_options)
+driver= webdriver.Chrome(executable_path='./chromedriver')
 
 class MonsterJobScrapper:
 
