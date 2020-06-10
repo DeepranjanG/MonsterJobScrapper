@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_cors import CORS, cross_origin
 import os
-from monsterJobScrapper.monsterJobScrapper import monsterJobScrapper
+from monsterJobScrapper.monsterJobScrapper import MonsterJobScrapper
 
 
 
@@ -22,7 +22,7 @@ def search():
         jobTitle = searchString
         location = request.form['location'].replace(" ", "")
         try:
-            monster = monsterJobScrapper()
+            monster = MonsterJobScrapper()
             monster_url = monster.createUrl(jobTitle, location)
             bigboxes = monster.get_webPage(monster_url)
             jobs=[]
