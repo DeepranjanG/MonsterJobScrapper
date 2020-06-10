@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+from flask_cors import CORS, cross_origin
+import os
 from monsterJobScrapper.monsterJobScrapper import monsterJobScrapper
 
 
@@ -6,11 +8,13 @@ from monsterJobScrapper.monsterJobScrapper import monsterJobScrapper
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
+@cross_origin()
 def homepage():
     return render_template('index.html')
 
 
 @app.route('/searchJob', methods=['GET', 'POST'])
+@cross_origin()
 def search():
     if request.method == 'POST':
         searchString = request.form['jobtitle'].split()
@@ -62,8 +66,8 @@ def search():
 
 
 
-port = int(os.getenv("PORT"))
+# port = int(os.getenv("PORT"))
 
 if __name__ == '__main__':
-    # app.run(debug=True)
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True)
+    # app.run(host='0.0.0.0', port=port)
