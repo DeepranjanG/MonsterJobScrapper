@@ -48,8 +48,8 @@ def search():
                     skill_box = box.find("p", {"class": "descrip-skills"}).findAll("span",{"class":"grey-link"})
                     skills=[]
                     for skill in skill_box:
-                        all_skill = skill.a.text.strip()
-                        skills.append(all_skill)
+                        all_skill = skill.a.text.strip(",")
+                        skills.append(all_skill.replace("\n",""))
 
                 except:
                     skills = "Not Found"
